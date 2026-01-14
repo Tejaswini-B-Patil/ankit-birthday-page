@@ -13,23 +13,23 @@
       justify-content: center;
       align-items: center;
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: radial-gradient(circle at top, #1a1a40, #000000);
-      color: #ffffff;
+      background: radial-gradient(circle at top, #1a1a40, #000);
+      color: #fff;
       text-align: center;
     }
 
     .card {
       background: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 40px 25px;
       max-width: 420px;
       width: 90%;
-      box-shadow: 0 0 30px rgba(255, 0, 120, 0.4);
+      box-shadow: 0 0 35px rgba(255, 0, 140, 0.45);
     }
 
     h1 {
       font-size: 2.4rem;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .sub {
@@ -50,12 +50,6 @@
       box-shadow: 0 0 25px rgba(255, 47, 146, 0.8);
     }
 
-    .hint {
-      margin-top: 15px;
-      font-size: 0.95rem;
-      opacity: 0.8;
-    }
-
     iframe {
       display: none;
     }
@@ -68,29 +62,27 @@
     <h1>🎉 Happy Birthday Ankit 🎂</h1>
     <p class="sub">
       Bollywood birthday vibes loading… 🇮🇳🎶<br>
-      Tap below to unmute & celebrate 🥳
+      Tap below to unmute & start the party 🥳
     </p>
 
     <button onclick="playMusic()">▶ Unmute & Play</button>
 
-    <p class="hint">🔊 Please increase your phone volume</p>
-
-    <!-- Hidden YouTube Player -->
+    <!-- ABCD 2 Happy Birthday (YouTube) -->
     <iframe
-      id="ytplayer"
-      width="0"
-      height="0"
-      src="https://www.youtube.com/embed/lhL2iE5vS7k?autoplay=1&mute=1&loop=1&playlist=lhL2iE5vS7k"
-      frameborder="0"
+      id="yt"
+      src=""
       allow="autoplay; encrypted-media"
-      allowfullscreen>
+      frameborder="0">
     </iframe>
   </div>
 
   <script>
     function playMusic() {
-      const iframe = document.getElementById("ytplayer");
-      iframe.src = "https://www.youtube.com/embed/lhL2iE5vS7k?autoplay=1&mute=0&loop=1&playlist=lhL2iE5vS7k";
+      const videoId = "lhL2iE5vS7k"; // ABCD 2 Happy Birthday
+      const timestamp = new Date().getTime(); // cache buster
+
+      document.getElementById("yt").src =
+        `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&loop=1&playlist=${videoId}&t=${timestamp}`;
     }
   </script>
 
