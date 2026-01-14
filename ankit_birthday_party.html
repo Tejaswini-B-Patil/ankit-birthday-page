@@ -4,59 +4,95 @@
   <meta charset="UTF-8">
   <title>Happy Birthday Ankit 🎉</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #1a1a2e, #000);
-      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: radial-gradient(circle at top, #1a1a40, #000000);
+      color: #ffffff;
       text-align: center;
     }
-    .container {
-      padding: 40px 20px;
+
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      padding: 40px 25px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 0 30px rgba(255, 0, 120, 0.4);
     }
+
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       margin-bottom: 10px;
     }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+
+    .sub {
+      font-size: 1.15rem;
+      margin-bottom: 25px;
+      opacity: 0.9;
     }
+
     button {
       font-size: 1.2rem;
-      padding: 12px 24px;
+      padding: 14px 30px;
       border: none;
-      border-radius: 30px;
-      background: #ff2f92;
-      color: white;
+      border-radius: 40px;
+      background: linear-gradient(90deg, #ff2f92, #ff9800);
+      color: #000;
+      font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(255,47,146,0.6);
+      box-shadow: 0 0 25px rgba(255, 47, 146, 0.8);
     }
-    button:hover {
-      background: #ff5fb0;
+
+    .hint {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    iframe {
+      display: none;
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
+
+  <div class="card">
     <h1>🎉 Happy Birthday Ankit 🎂</h1>
-    <p>Music is loading automatically…<br>
-    Tap below to unmute & start the party 🥳🎧</p>
+    <p class="sub">
+      Bollywood birthday vibes loading… 🇮🇳🎶<br>
+      Tap below to unmute & celebrate 🥳
+    </p>
 
     <button onclick="playMusic()">▶ Unmute & Play</button>
 
-    <audio id="music" autoplay muted loop>
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
+    <p class="hint">🔊 Please increase your phone volume</p>
+
+    <!-- Hidden YouTube Player -->
+    <iframe
+      id="ytplayer"
+      width="0"
+      height="0"
+      src="https://www.youtube.com/embed/lhL2iE5vS7k?autoplay=1&mute=1&loop=1&playlist=lhL2iE5vS7k"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
   </div>
 
   <script>
-    const audio = document.getElementById("music");
     function playMusic() {
-      audio.muted = false;
-      audio.play();
+      const iframe = document.getElementById("ytplayer");
+      iframe.src = "https://www.youtube.com/embed/lhL2iE5vS7k?autoplay=1&mute=0&loop=1&playlist=lhL2iE5vS7k";
     }
   </script>
+
 </body>
 </html>
