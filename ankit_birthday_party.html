@@ -64,8 +64,8 @@
       Bollywood birthday vibes loading… 🇮🇳🎶<br>
       Tap below to unmute & start the party 🥳
     </p>
-
-    <button onclick="playMusic()">▶ Unmute & Play</button>
+    
+<button onclick="playMusic()">▶ Open Birthday Song</button>
 
     <!-- ABCD 2 Happy Birthday (YouTube) -->
     <iframe
@@ -77,13 +77,12 @@
   </div>
 
   <script>
-    function playMusic() {
-      const videoId = "lhL2iE5vS7k"; // ABCD 2 Happy Birthday
-      const timestamp = new Date().getTime(); // cache buster
-
-      document.getElementById("yt").src =
-        `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&loop=1&playlist=${videoId}&t=${timestamp}`;
-    }
+     function playMusic() {
+        window.open(
+          "https://www.youtube.com/watch?v=lhL2iE5vS7k",
+          "_blank"
+    );
+  }
   </script>
 
 </body>
