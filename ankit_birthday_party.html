@@ -1,64 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday Ankit 🎉</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #1a1a2e, #000);
-      color: white;
-      text-align: center;
-    }
-    .container {
-      padding: 40px 20px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-    button {
-      font-size: 1.2rem;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 30px;
-      background: #ff2f92;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255,47,146,0.6);
-    }
-    button:hover {
-      background: #ff5fb0;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Happy Birthday Ankit 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a1a2e, #000);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  padding-top: 100px;
+}
+
+h1 {
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 30px;
+  background: #ff2f92;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,47,146,0.6);
+}
+button:hover {
+  background: #ff5fb0;
+}
+
+/* 🎈 Balloons */
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  width: 60px;
+  height: 80px;
+  border-radius: 50%;
+  animation: float 12s linear infinite;
+}
+.balloon::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 40px;
+  background: #fff;
+  top: 80px;
+  left: 29px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* 🎆 Fireworks */
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  border-radius: 50%;
+  animation: explode 1.2s ease-out forwards;
+}
+
+@keyframes explode {
+  0% { box-shadow: none; }
+  100% {
+    box-shadow:
+      0 -80px #ffcc00,
+      60px -40px #ff2f92,
+      60px 40px #00eaff,
+      0 80px #9bff00,
+      -60px 40px #ff6bff,
+      -60px -40px #00ff9d;
+    opacity: 0;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>🎉 Happy Birthday Ankit!!! 🎉</h1>
-    <p>
-      Background birthday melody 🎶<br>
-      Tap once to start the music 🥳
-    </p>
 
-    <button onclick="playMusic()">▶ Play Birthday Music</button>
+<div class="container">
+  <h1>🎉 Happy Birthday Ankit!!! 🎉</h1>
+  <p>
+    Soft birthday melody 🎶<br>
+    Tap once to start music & celebrations 🎈🎆
+  </p>
 
-    <!-- Happy Birthday Instrumental -->
-    <audio id="music" loop>
-      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4b9d9f77b1.mp3?filename=happy-birthday-piano-117971.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+  <button onclick="startParty()">▶ Start Celebration</button>
 
-  <script>
-    const audio = document.getElementById("music");
-    function playMusic() {
-      audio.play();
-    }
-  </script>
+  <!-- 🎵 Soft Happy Birthday Melody -->
+  <audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4b9d9f77b1.mp3?filename=happy-birthday-piano-117971.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script>
+const music = document.getElementById("music");
+
+/* 🎉 Start everything */
+function startParty() {
+  music.volume = 0.4; // softer sound
+  music.play();
+  releaseBalloons();
+  setInterval(createFirework, 900);
+}
+
+/* 🎈 Balloons */
+function releaseBalloons() {
+  for (let i = 0; i < 20; i++) {
+    const balloon = document.createElement("div");
+    balloon.className = "balloon";
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.background = randomColor();
+    balloon.style.animationDuration = (8 + Math.random() * 6) + "s";
+    document.body.appendChild(balloon);
+
+    setTimeout(() => balloon.remove(), 14000);
+  }
+}
+
+/* 🎆 Fireworks */
+function createFirework() {
+  const firework = document.createElement("div");
+  firework.className = "firework";
+  firework.style.left = Math.random() * 100 + "vw";
+  firework.style.top = Math.random() * 60 + "vh";
+  document.body.appendChild(firework);
+
+  setTimeout(() => firework.remove(), 1200);
+}
+
+function randomColor() {
+  const colors = ["#ff2f92", "#00eaff", "#ffcc00", "#9bff00", "#ff6bff"];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+</script>
+
 </body>
 </html>
