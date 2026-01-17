@@ -17,7 +17,7 @@
     }
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 10px;                                                                              
+      margin-bottom: 10px;
     }
     p {
       font-size: 1.2rem;
@@ -41,20 +41,22 @@
 <body>
   <div class="container">
     <h1>🎉 Happy Birthday Ankit!!! 🎉</h1>
-    <p>Music is loading automatically…<br>
-    Tap below to unmute & start the party 🥳🎧</p>
+    <p>
+      Background birthday melody 🎶<br>
+      Tap once to start the music 🥳
+    </p>
 
-    <button onclick="playMusic()">▶ Unmute & Play</button>
+    <button onclick="playMusic()">▶ Play Birthday Music</button>
 
-    <audio id="music" autoplay muted loop>
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <!-- Happy Birthday Instrumental -->
+    <audio id="music" loop>
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4b9d9f77b1.mp3?filename=happy-birthday-piano-117971.mp3" type="audio/mpeg">
     </audio>
   </div>
 
   <script>
     const audio = document.getElementById("music");
     function playMusic() {
-      audio.muted = false;
       audio.play();
     }
   </script>
